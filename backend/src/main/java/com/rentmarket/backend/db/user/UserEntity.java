@@ -31,7 +31,7 @@ public class UserEntity extends BaseEntity {
     private String password;
 
     @Column(nullable = false)
-    private int phoneNumber;
+    private String phoneNumber;
 
     @Column(nullable = false)
     private String location;

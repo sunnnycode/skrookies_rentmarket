@@ -23,7 +23,7 @@ public class UserRegisterRequest {
     private String password;
 
     @NotBlank
-    private int phoneNumber;
+    private String phoneNumber;
 
     @NotBlank
     private String location;

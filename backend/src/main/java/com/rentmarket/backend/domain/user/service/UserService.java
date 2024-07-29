@@ -52,10 +52,10 @@ public class UserService {
     }
 
     public UserEntity getUserWithThrow(
-            Long userId
+            int id
     ){
         return userRepository.findFirstByIdAndStatusOrderByIdDesc(
-                userId,
+                id,
                 UserStatus.REGISTERED
         ).orElseThrow(()-> new ApiException(UserErrorCode.USER_NOT_FOUND));
     }

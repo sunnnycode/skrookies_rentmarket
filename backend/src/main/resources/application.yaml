@@ -1,6 +1,6 @@
 spring:
-#  profiles:
-#    active: dev
+  profiles:
+    active: dev
   application:
     name: backend
   jpa:
@@ -22,8 +22,9 @@ spring:
 #    cache: false
 
 #log 설정
-#logging:
-# config: classpath:logback-spring.xml
+logging:
+ config: classpath:logback-spring.xml
+
 token:
   secret:
     key: SpringBootJWTHelperTokenSecretKeyValue123!@#

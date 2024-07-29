@@ -23,7 +23,7 @@ public class UserResponse {
 
     private String password;
 
-    private int phoneNumber;
+    private String phoneNumber;
 
     private String location;
 
