@@ -1,11 +1,12 @@
 package com.rentmarket.backend.domain.user.business;
 
 import com.rentmarket.backend.common.annotation.Business;
-import com.rentmarket.backend.domain.user.controller.model.UserLoginRequest;
-import com.rentmarket.backend.domain.user.controller.model.UserRegisterRequest;
-import com.rentmarket.backend.domain.user.controller.model.UserResponse;
-import com.rentmarket.backend.domain.user.converter.UserConverter;
-import com.rentmarket.backend.domain.user.model.User;
+
+import com.rentmarket.backend.domain.user.dto.UserDto;
+import com.rentmarket.backend.domain.user.dto.UserMapper;
+import com.rentmarket.backend.domain.user.dto.UserLoginRequest;
+import com.rentmarket.backend.domain.user.dto.UserRegisterRequest;
+import com.rentmarket.backend.domain.user.dto.UserResponse;
 import com.rentmarket.backend.domain.user.service.UserService;
 import com.rentmarket.backend.domain.user.token.business.TokenBusiness;
 import com.rentmarket.backend.domain.user.token.controller.model.TokenResponse;
@@ -18,7 +19,7 @@ public class UserBusiness {
 
     private final UserService userService;
 
-    private final UserConverter userConverter;
+    private final UserMapper userMapper;
 
     private final TokenBusiness tokenBusiness;
 
@@ -31,9 +32,9 @@ public class UserBusiness {
      */
     public UserResponse register(UserRegisterRequest request) {
 
-        var entity = userConverter.toEntity(request);
+        var entity = userMapper.toEntity(request);
         var newEntity = userService.register(entity);
-        var response = userConverter.toResponse(newEntity);
+        var response = userMapper.toResponse(newEntity);
         return response;
 
 
@@ -53,14 +54,13 @@ public class UserBusiness {
     }
 
     public UserResponse me(
-            User user
+            UserDto userdto
     ) {
-        var userEntity = userService.getUserWithThrow(user.getId());
-        var response = userConverter.toResponse(userEntity);
+        var userEntity = userService.getUserWithThrow(userdto.getId());
+        var response = userMapper.toResponse(userEntity);
         return response;
 
 
     }
 }
-
 

@@ -3,7 +3,7 @@ package com.rentmarket.backend.domain.user.token.helper;
 import com.rentmarket.backend.common.error.TokenErrorCode;
 import com.rentmarket.backend.common.exception.ApiException;
 import com.rentmarket.backend.domain.user.token.Ifs.TokenHelperIfs;
-import com.rentmarket.backend.domain.user.token.model.TokenDto;
+import com.rentmarket.backend.domain.user.token.dto.TokenDto;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -95,7 +95,7 @@ public class JwtTokenHelper implements TokenHelperIfs {
 
         }catch (Exception e){
             if(e instanceof SignatureException){
-               // 토큰이 유효하지 않을 때
+                // 토큰이 유효하지 않을 때
                 throw new ApiException(TokenErrorCode.INVALID_TOKEN);
             }
             else if(e instanceof ExpiredJwtException){

@@ -1,4 +1,4 @@
-package com.rentmarket.backend.domain.user.token.model;
+package com.rentmarket.backend.domain.user.token.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 
 public class TokenDto {
+
     private String token;
 
     private LocalDateTime expiredAt;

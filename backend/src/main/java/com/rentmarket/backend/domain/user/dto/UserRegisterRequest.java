@@ -1,4 +1,4 @@
-package com.rentmarket.backend.domain.user.controller.model;
+package com.rentmarket.backend.domain.user.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

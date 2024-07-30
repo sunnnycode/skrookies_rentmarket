@@ -3,9 +3,10 @@ package com.rentmarket.backend.domain.user.controller;
 
 import com.rentmarket.backend.common.api.Api;
 import com.rentmarket.backend.domain.user.business.UserBusiness;
-import com.rentmarket.backend.domain.user.controller.model.UserLoginRequest;
-import com.rentmarket.backend.domain.user.controller.model.UserRegisterRequest;
-import com.rentmarket.backend.domain.user.controller.model.UserResponse;
+
+import com.rentmarket.backend.domain.user.dto.UserLoginRequest;
+import com.rentmarket.backend.domain.user.dto.UserRegisterRequest;
+import com.rentmarket.backend.domain.user.dto.UserResponse;
 import com.rentmarket.backend.domain.user.token.controller.model.TokenResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -36,11 +37,10 @@ public class UserOpenApiController {
     // 로그인
     @PostMapping("/login")
     public Api<TokenResponse> login(
-        @Valid
-        @RequestBody Api<UserLoginRequest> request
+            @Valid
+            @RequestBody Api<UserLoginRequest> request
     ){
         var response = userBusiness.login(request.getBody());
         return Api.OK(response);
     }
 }
-

@@ -3,7 +3,7 @@ package com.rentmarket.backend.domain.user.token.service;
 import com.rentmarket.backend.common.error.ErrorCode;
 import com.rentmarket.backend.common.exception.ApiException;
 import com.rentmarket.backend.domain.user.token.Ifs.TokenHelperIfs;
-import com.rentmarket.backend.domain.user.token.model.TokenDto;
+import com.rentmarket.backend.domain.user.token.dto.TokenDto;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;

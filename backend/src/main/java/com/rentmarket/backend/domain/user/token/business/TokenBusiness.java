@@ -3,7 +3,7 @@ package com.rentmarket.backend.domain.user.token.business;
 import com.rentmarket.backend.common.annotation.Business;
 import com.rentmarket.backend.common.error.ErrorCode;
 import com.rentmarket.backend.common.exception.ApiException;
-import com.rentmarket.backend.db.user.UserEntity;
+import com.rentmarket.backend.db.user.User;
 import com.rentmarket.backend.domain.user.token.controller.model.TokenResponse;
 import com.rentmarket.backend.domain.user.token.converter.TokenConverter;
 import com.rentmarket.backend.domain.user.token.service.TokenService;
@@ -26,7 +26,7 @@ public class TokenBusiness {
      * 3. converter -> token response로 변경
      */
 
-    public TokenResponse issueToken(UserEntity userEntity){
+    public TokenResponse issueToken(User userEntity){
 
         return Optional.ofNullable(userEntity)
                 .map(user -> {

@@ -4,7 +4,7 @@ import com.rentmarket.backend.common.annotation.Converter;
 import com.rentmarket.backend.common.error.ErrorCode;
 import com.rentmarket.backend.common.exception.ApiException;
 import com.rentmarket.backend.domain.user.token.controller.model.TokenResponse;
-import com.rentmarket.backend.domain.user.token.model.TokenDto;
+import com.rentmarket.backend.domain.user.token.dto.TokenDto;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Objects;

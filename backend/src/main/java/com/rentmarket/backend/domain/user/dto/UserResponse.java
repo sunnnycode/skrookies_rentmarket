@@ -1,4 +1,5 @@
-package com.rentmarket.backend.domain.user.model;
+package com.rentmarket.backend.domain.user.dto;
+
 
 import com.rentmarket.backend.db.user.enums.UserStatus;
 import lombok.AllArgsConstructor;
@@ -6,14 +7,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class UserResponse {
 
     private int id;
 
@@ -30,7 +30,5 @@ public class User {
     private LocalDateTime createdAt;
 
     private UserStatus status;
-
-
 
 }

@@ -1,11 +1,12 @@
-package com.rentmarket.backend.domain.user.controller.model;
-
+package com.rentmarket.backend.domain.user.dto;
 
 import com.rentmarket.backend.db.user.enums.UserStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
+
 
 import java.time.LocalDateTime;
 
@@ -13,7 +14,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserResponse {
+@Component
+public class UserDto {
 
     private int id;
 
@@ -30,5 +32,7 @@ public class UserResponse {
     private LocalDateTime createdAt;
 
     private UserStatus status;
+
+
 
 }

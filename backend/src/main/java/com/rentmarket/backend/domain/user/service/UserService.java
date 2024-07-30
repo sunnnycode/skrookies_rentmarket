@@ -3,7 +3,7 @@ package com.rentmarket.backend.domain.user.service;
 import com.rentmarket.backend.common.error.ErrorCode;
 import com.rentmarket.backend.common.error.UserErrorCode;
 import com.rentmarket.backend.common.exception.ApiException;
-import com.rentmarket.backend.db.user.UserEntity;
+import com.rentmarket.backend.db.user.User;
 import com.rentmarket.backend.db.user.UserRepository;
 import com.rentmarket.backend.db.user.enums.UserStatus;
 import lombok.RequiredArgsConstructor;
@@ -22,17 +22,17 @@ public class UserService {
     private final UserRepository userRepository;
 
 
-    public UserEntity register(UserEntity userEntity){
-        return Optional.ofNullable(userEntity)
+    public User register(User user){
+        return Optional.ofNullable(user)
                 .map(it ->{
-                    userEntity.setStatus(UserStatus.REGISTERED);
-                    userEntity.setCreatedAt(LocalDateTime.now());
-                    return userRepository.save(userEntity);
+                    user.setStatus(UserStatus.REGISTERED);
+                    user.setCreatedAt(LocalDateTime.now());
+                    return userRepository.save(user);
                 })
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT, "User Entity Null"));
     }
 
-    public UserEntity login(
+    public User login(
             String email,
             String password
     ){
@@ -40,7 +40,7 @@ public class UserService {
         return entity;
     }
 
-    public UserEntity getUserWithThrow(
+    public User getUserWithThrow(
             String email,
             String password
     ){
@@ -51,7 +51,7 @@ public class UserService {
         ).orElseThrow(()-> new ApiException(UserErrorCode.USER_NOT_FOUND));
     }
 
-    public UserEntity getUserWithThrow(
+    public User getUserWithThrow(
             int id
     ){
         return userRepository.findFirstByIdAndStatusOrderByIdDesc(

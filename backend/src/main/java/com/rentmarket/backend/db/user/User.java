@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @SuperBuilder
-public class UserEntity extends BaseEntity {
+public class User extends BaseEntity {
 
 
     @Id
