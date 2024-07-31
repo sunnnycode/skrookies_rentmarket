@@ -4,6 +4,7 @@ import com.rentmarket.backend.common.annotation.Business;
 import com.rentmarket.backend.common.error.ErrorCode;
 import com.rentmarket.backend.common.exception.ApiException;
 import com.rentmarket.backend.db.user.User;
+import com.rentmarket.backend.domain.user.dto.CustomUserDetail;
 import com.rentmarket.backend.domain.user.token.controller.model.TokenResponse;
 import com.rentmarket.backend.domain.user.token.converter.TokenConverter;
 import com.rentmarket.backend.domain.user.token.service.TokenService;
@@ -19,6 +20,8 @@ public class TokenBusiness {
     private final TokenService tokenService;
 
     private final TokenConverter tokenConverter;
+
+    private final User user;
 
     /**
      * 1. user entity user Id 추출
@@ -44,8 +47,20 @@ public class TokenBusiness {
 
     }
 
-    public Long validationAccessToken(String accessToken){
-        var userId = tokenService.validationToken(accessToken);
-        return userId;
+    public CustomUserDetail validationAccessToken(String accessToken){
+        //var userId = tokenService.validationToken(accessToken);
+        String username = extractUsernameFromToken(accessToken);
+        String location = extractUsernameFromToken(accessToken);
+        return new CustomUserDetail(username, location);
+    }
+
+    private String extractUsernameFromToken(String accessToken) {
+        return user.getUsername();
+        // Extract username from token
+    }
+
+    private String extractLocationFromToken(String accessToken) {
+        // Extract location from token
+        return user.getLocation();
     }
 }

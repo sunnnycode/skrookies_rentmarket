@@ -1,12 +1,17 @@
 package com.rentmarket.backend.domain.board.controller;
 
+import com.rentmarket.backend.db.board.enums.BoardCategory;
 import com.rentmarket.backend.db.user.User;
 import com.rentmarket.backend.db.user.UserRepository;
+import com.rentmarket.backend.db.user.enums.UserStatus;
 import com.rentmarket.backend.domain.board.dto.BoardDto;
 import com.rentmarket.backend.domain.board.response.Response;
 import com.rentmarket.backend.domain.board.service.BoardService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor

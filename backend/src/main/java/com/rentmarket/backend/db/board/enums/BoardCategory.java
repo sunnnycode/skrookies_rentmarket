@@ -1,8 +1,10 @@
 package com.rentmarket.backend.db.board.enums;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor
+@Getter
 public enum BoardCategory {
 
     CLOTHES( "의류"),

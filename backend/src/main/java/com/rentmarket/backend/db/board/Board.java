@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "post")
+@Table(name = "board")
 @Data
 @NoArgsConstructor
 @SuperBuilder
@@ -54,28 +54,12 @@ public class Board extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private UserStatus status;
 
-    @Column(name = "removed", nullable = false)
-    private boolean removed;
+//    @Column(name = "removed", nullable = false)
+//    private boolean removed;
 
 
-//    public PostEntity update(PostSaveRequest postRequest) {
-//        this.title = postRequest.getTitle();
-//        this.content = postRequest.getContent();
-//        this.price = postRequest.getPrice();
-//        return this;
-//    }
-
-    public void removePost() {
-        this.removed = true;
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
     }
-
-//    public void update(String content) {
-//        this.content = content;
-//
-//    }
-
-//    public void update(String title, String content) {
-//        this.title = title;
-//        this.content = content;
-//    }
 }

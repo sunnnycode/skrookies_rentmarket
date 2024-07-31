@@ -41,9 +41,16 @@ public class BoardService {
     @Transactional
     public BoardDto write(BoardDto boardDto, User user) {
         Board board = new Board();
+        board.setId(boardDto.getId());
+        board.setCategory(boardDto.getCategory());
         board.setTitle(boardDto.getTitle());
+        board.setThumbnailUrl(boardDto.getThumbnailUrl());
         board.setContent(boardDto.getContent());
-        board.setUsername(board.getUsername());
+        board.setUsername(boardDto.getUsername());
+        board.setLocation(boardDto.getLocation());
+        board.setPrice(boardDto.getPrice());
+        board.setCreatedAt(boardDto.getCreatedAt());
+        board.setStatus(boardDto.getStatus());
         boardRepository.save(board);
         return BoardDto.toDto(board);
     }

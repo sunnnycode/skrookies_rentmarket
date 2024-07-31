@@ -3,6 +3,7 @@ package com.rentmarket.backend.domain.board.dto;
 import com.rentmarket.backend.db.board.Board;
 import com.rentmarket.backend.db.board.enums.BoardCategory;
 import com.rentmarket.backend.db.user.enums.UserStatus;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,15 +19,34 @@ import java.time.LocalDateTime;
 @Component
 public class BoardDto {
 
+    @NotNull
     private int id;
+
+    @NotNull
     private String username;
+
+    @NotNull
     private String location;
+
+    @NotNull
     private BoardCategory category;
+
+    @NotNull
     private String title;
+
+    @NotNull
     private String thumbnailUrl;
+
+    @NotNull
     private int price;
+
+    @NotNull
     private String content;
+
+    @NotNull
     private LocalDateTime createdAt;
+
+    @NotNull
     private UserStatus status;
 
     public static BoardDto toDto(Board board) {
