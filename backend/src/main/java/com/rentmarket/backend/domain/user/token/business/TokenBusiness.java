@@ -33,7 +33,7 @@ public class TokenBusiness {
 
         return Optional.ofNullable(userEntity)
                 .map(user -> {
-                    return user.getId();
+                    return user.getUsername();
                 })
                 .map(userId -> {
                     var accessToken = tokenService.issueAccessToken(userId);

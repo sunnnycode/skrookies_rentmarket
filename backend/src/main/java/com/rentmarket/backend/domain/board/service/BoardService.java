@@ -1,5 +1,6 @@
 package com.rentmarket.backend.domain.board.service;
 
+
 import com.rentmarket.backend.db.board.Board;
 import com.rentmarket.backend.db.board.BoardRepository;
 import com.rentmarket.backend.db.user.User;
@@ -17,6 +18,13 @@ import java.util.List;
 public class BoardService {
 
     private final BoardRepository boardRepository;
+//    private final JwtUtils jwtUtils;
+//
+//
+//    public BoardService(BoardRepository boardRepository, JwtUtils jwtUtils) {
+//        this.boardRepository = boardRepository;
+//        this.jwtUtils = jwtUtils;
+//    }
 
     // 전체 게시물 조회
     @Transactional(readOnly = true)
@@ -41,16 +49,18 @@ public class BoardService {
     @Transactional
     public BoardDto write(BoardDto boardDto, User user) {
         Board board = new Board();
-        board.setId(boardDto.getId());
         board.setCategory(boardDto.getCategory());
         board.setTitle(boardDto.getTitle());
         board.setThumbnailUrl(boardDto.getThumbnailUrl());
         board.setContent(boardDto.getContent());
-        board.setUsername(boardDto.getUsername());
-        board.setLocation(boardDto.getLocation());
         board.setPrice(boardDto.getPrice());
         board.setCreatedAt(boardDto.getCreatedAt());
         board.setStatus(boardDto.getStatus());
+
+        // User 객체에서 가져온 정보
+        board.setUsername(user.getUsername());
+        board.setLocation(user.getLocation());
+
         boardRepository.save(board);
         return BoardDto.toDto(board);
     }

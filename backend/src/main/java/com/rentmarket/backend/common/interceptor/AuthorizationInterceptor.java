@@ -3,7 +3,9 @@ package com.rentmarket.backend.common.interceptor;
 import com.rentmarket.backend.common.error.ErrorCode;
 import com.rentmarket.backend.common.error.TokenErrorCode;
 import com.rentmarket.backend.common.exception.ApiException;
+import com.rentmarket.backend.domain.user.dto.CustomUserDetail;
 import com.rentmarket.backend.domain.user.token.business.TokenBusiness;
+import com.rentmarket.backend.domain.user.dto.CustomUserDetail;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +27,8 @@ import java.util.Objects;
 public class AuthorizationInterceptor implements HandlerInterceptor {
 
     private final TokenBusiness tokenBusiness;
+    //private final CustomUserDetail customUserDetail;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         log.info("Authorization Interceptor url : {}", request.getRequestURI());
@@ -44,11 +48,13 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
         if(accessToken == null){
             throw new ApiException(TokenErrorCode.AUTHORIZATION_TOKEN_NOT_FOUND);
         }
-        var userId = tokenBusiness.validationAccessToken(accessToken);
 
-        if(userId != null) {
+        CustomUserDetail customUserDetail = tokenBusiness.validationAccessToken(accessToken);
+        if(customUserDetail != null) {
             var requestContext = Objects.requireNonNull(RequestContextHolder.getRequestAttributes());
-            requestContext.setAttribute("userId", userId, RequestAttributes.SCOPE_REQUEST);
+            //requestContext.setAttribute("userId", userDetails.getUserId(), RequestAttributes.SCOPE_REQUEST);
+            requestContext.setAttribute("username", customUserDetail.getUsername(), RequestAttributes.SCOPE_REQUEST);
+            requestContext.setAttribute("location", customUserDetail.getLocation(), RequestAttributes.SCOPE_REQUEST);
             return true;
         }
 
