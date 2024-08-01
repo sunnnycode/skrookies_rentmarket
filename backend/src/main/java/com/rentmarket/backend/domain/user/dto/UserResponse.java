@@ -27,8 +27,6 @@ public class UserResponse {
 
     private String location;
 
-    private LocalDateTime createdAt;
-
     private UserStatus status;
 
 }

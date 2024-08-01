@@ -22,6 +22,7 @@ public class UserBusiness {
     private final UserMapper userMapper;
 
     private final TokenBusiness tokenBusiness;
+    
 
     /**
      * 사용자에 대한 가입처리 로직

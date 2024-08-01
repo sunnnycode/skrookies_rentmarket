@@ -10,6 +10,10 @@ public enum BoardCategory {
     CLOTHES( "의류"),
 
     KITHEN("주방용품"),
+
+    CAMPING("캠핑"),
+
+    BOOK("도서")
     ;
 
 

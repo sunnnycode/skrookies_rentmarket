@@ -12,6 +12,7 @@ spring:
     hibernate:
       ddl-auto: none
 
+
   #database 설정
   datasource:
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
@@ -23,7 +24,11 @@ spring:
 
 #log 설정
 logging:
- config: classpath:logback-spring.xml
+  config: classpath:logback-spring.xml
+#  level:
+#    root: DEBUG
+#  pattern:
+#     console: "%d %5p {%c} %m%n"
 
 token:
   secret:

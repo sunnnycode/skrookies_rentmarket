@@ -42,7 +42,6 @@ public class UserMapper {
                             .email(user.getEmail())
                             .location(user.getLocation())
                             .phoneNumber(user.getPhoneNumber())
-                            .createdAt(user.getCreatedAt())
                             .build();
                 })
                 .orElseThrow(()-> new ApiException(ErrorCode.NULL_POINT, "UserEntity Null"));

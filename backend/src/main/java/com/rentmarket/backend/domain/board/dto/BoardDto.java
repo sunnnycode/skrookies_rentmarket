@@ -3,6 +3,7 @@ package com.rentmarket.backend.domain.board.dto;
 import com.rentmarket.backend.db.board.Board;
 import com.rentmarket.backend.db.board.enums.BoardCategory;
 import com.rentmarket.backend.db.user.enums.UserStatus;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

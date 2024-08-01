@@ -26,7 +26,6 @@ public class UserService {
         return Optional.ofNullable(user)
                 .map(it ->{
                     user.setStatus(UserStatus.REGISTERED);
-                    user.setCreatedAt(LocalDateTime.now());
                     return userRepository.save(user);
                 })
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT, "User Entity Null"));

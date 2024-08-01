@@ -38,11 +38,20 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private String location;
 
-    @Column(nullable = false)
-    private LocalDateTime createdAt;
 
     @Column(length = 50, nullable = false)
     @Enumerated(EnumType.STRING)
     private UserStatus status;
+
+    // getter, setter
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+
 
 }

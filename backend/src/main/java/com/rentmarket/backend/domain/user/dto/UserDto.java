@@ -29,8 +29,6 @@ public class UserDto {
 
     private String location;
 
-    private LocalDateTime createdAt;
-
     private UserStatus status;
 
 

@@ -8,6 +8,7 @@ import com.rentmarket.backend.domain.user.dto.UserDto;
 
 import com.rentmarket.backend.domain.user.dto.UserResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/user")
+@CrossOrigin(origins="http://localhost:3000", allowedHeaders="POST")
 public class UserApiController {
 
     private final UserBusiness userBusiness;

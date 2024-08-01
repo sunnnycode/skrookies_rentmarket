@@ -2,6 +2,7 @@ package com.rentmarket.backend.db.board;
 
 import com.rentmarket.backend.common.entity.BaseEntity;
 import com.rentmarket.backend.db.board.enums.BoardCategory;
+import com.rentmarket.backend.db.user.User;
 import com.rentmarket.backend.db.user.enums.UserStatus;
 
 import jakarta.persistence.*;
@@ -26,6 +27,8 @@ public class Board extends BaseEntity {
     @Column(nullable = false)
     private String username;
 
+
+    @NotNull
     @Column(nullable = false)
     private String location;
 
@@ -61,5 +64,20 @@ public class Board extends BaseEntity {
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
+    }
+
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    // getter, setter
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
